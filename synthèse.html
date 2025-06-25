@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthèse | Portfolio Adel Bensaad</title>
+    <link rel="icon" href="assets/images/logo.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        :root {
+            --main-color: #00e1ff;
+            --text-color: #f3f3f3;
+            --bg-color: #181c24;
+            --shadow-color: rgba(0, 225, 255, 0.3);
+            --font: 'Poppins', sans-serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font);
+        }
+        body {
+            background: linear-gradient(120deg, #181c24 60%, #232a34 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 7%;
+            background: linear-gradient(90deg, #181c24 80%, var(--main-color) 120%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 2px 12px var(--shadow-color);
+        }
+        .logo {
+            font-size: 28px;
+            color: var(--main-color);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px #0a0a0a;
+        }
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .navbar a {
+            font-size: 17px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 28px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .navbar a.active,
+        .navbar a:hover {
+            color: var(--main-color);
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--main-color);
+            left: 0;
+            bottom: -4px;
+            border-radius: 2px;
+            transition: 0.4s;
+        }
+        .navbar a:hover::after,
+        .navbar a.active::after {
+            width: 100%;
+        }
+        #menu-icon {
+            font-size: 2.2rem;
+            color: var(--main-color);
+            cursor: pointer;
+            display: none;
+        }
+        .synthese-container {
+            flex: 1 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding-top: 110px;
+            padding-bottom: 40px;
+        }
+        .synthese-img-wrapper {
+            position: relative;
+            max-width: 1000px;
+            width: 90vw;
+            max-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+            cursor: zoom-in;
+        }
+        .synthese-img-wrapper.zoomed {
+            z-index: 200;
+            transform: scale(1.7);
+            cursor: zoom-out;
+            box-shadow: 0 0 40px 8px var(--main-color);
+        }
+        .synthese-img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px var(--shadow-color);
+            background: #232a34;
+            object-fit: contain;
+            transition: box-shadow 0.3s;
+        }
+
+        .about-content .btn-box {
+            display: flex;
+            gap: 18px;
+            margin-top: 10px;
+            opacity: 0;
+            animation: zoomIn 1s ease forwards;
+            animation-delay: 1.5s;
+        }
+        .btn {
+            padding: 12px 32px;
+            background: var(--main-color);
+            border-radius: 30px;
+            font-size: 16px;
+            color: var(--bg-color);
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            box-shadow: 0 0 8px var(--main-color);
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover {
+            background: #fff;
+            color: var(--main-color);
+            box-shadow: 0 0 24px var(--main-color);
+        }
+        
+        @media (max-width: 1100px) {
+            .header {
+                padding: 16px 3%;
+            }
+            .synthese-container {
+                padding-top: 90px;
+            }
+        }
+        @media (max-width: 800px) {
+            .header {
+                padding: 12px 2%;
+            }
+            .synthese-container {
+                padding-top: 70px;
+            }
+            .synthese-img-wrapper {
+                max-width: 98vw;
+            }
+        }
+        @media (max-width: 650px) {
+            .header {
+                flex-direction: row;
+                padding: 10px 1%;
+            }
+            .navbar {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #232a34;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 18px 0;
+                display: none;
+                box-shadow: 0 8px 24px var(--shadow-color);
+            }
+            .navbar.active {
+                display: flex;
+            }
+            .navbar a {
+                margin: 10px 0 10px 18px;
+                font-size: 18px;
+            }
+            #menu-icon {
+                display: block;
+            }
+            .synthese-img-wrapper {
+                max-width: 100vw;
+            }
+        }
+        .footer-copyright {
+            width: 100%;
+            background: #181c24;
+            color: var(--main-color);
+            text-align: center;
+            padding: 18px 0 12px 0;
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin-top: 60px;
+            box-shadow: 0 -2px 12px var(--shadow-color);
+            position: relative;
+            flex-shrink: 0;
+        }
+        .footer-copyright span {
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="index.html" class="logo">Portfolio</a>
+        <nav class="navbar" role="navigation" aria-label="Navigation principale">
+            <a href="Home.html" style="--i:1">Accueil</a>
+            <a href="Présentation.html" style="--i:2">Présentation</a>
+            <a href="BTS SIO SISR.html" style="--i:3">BTS SIO SISR</a>
+            <a href="Dashboard.html" style="--i:4">Dashboard</a>
+            <a href="compétences.html" style="--i:5">Compétences</a>
+            <a href="projets.html" style="--i:6">Projets</a>
+            <a href="CV.html" style="--i:7">CV</a>
+            <a href="synthèse.html" class="active" style="--i:8">Synthèse</a>
+            <a href="veille.html" style="--i:9">Veille</a>
+            <a href="contact.html" style="--i:10">Contact</a>
+            <a href="remerciements.html" style="--i:11">Remerciements</a>
+        </nav>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+    <!-- Section Synthèse -->
+    <main class="synthese-container">
+        <div class="synthese-img-wrapper" id="zoomable-img">
+            <img src="synthese-tableau.png" alt="Tableau de synthèse" class="synthese-img" id="synthese-img">
+        </div>
+          <div class="btn-box">
+                <a href="Tableau de synthèse.pdf" class="btn" download>Télécharger mon Tableau</a>
+            </div>
+    </main>
+    <footer class="footer-copyright">
+        <span>&copy; 2025 Adel Bensaad - Tous droits réservés</span>
+    </footer>
+    <script>
+        // Menu responsive
+        const menuIcon = document.getElementById("menu-icon");
+        const navbar = document.querySelector(".navbar");
+        menuIcon.onclick = () => {
+            navbar.classList.toggle("active");
+        };
+        // Fermer le menu au clic sur un lien (mobile)
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth < 650) navbar.classList.remove('active');
+            });
+        });
+
+        // Zoom sur l'image de synthèse
+        const zoomableImg = document.getElementById('zoomable-img');
+        zoomableImg.addEventListener('click', function() {
+            this.classList.toggle('zoomed');
+        });
+        // Fermer le zoom si on clique en dehors de l'image (optionnel)
+        document.addEventListener('click', function(e) {
+            if (
+                zoomableImg.classList.contains('zoomed') &&
+                !zoomableImg.contains(e.target)
+            ) {
+                zoomableImg.classList.remove('zoomed');
+            }
+        });
+    </script>
+</body>
+</html>
