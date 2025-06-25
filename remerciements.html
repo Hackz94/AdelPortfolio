@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remerciements | Portfolio Adel Bensaad</title>
+    <link rel="icon" href="assets/images/logo.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        :root {
+            --main-color: #00e1ff;
+            --text-color: #f3f3f3;
+            --bg-color: #181c24;
+            --shadow-color: rgba(0, 225, 255, 0.3);
+            --font: 'Poppins', sans-serif;
+            --accent: #ffb300;
+            --accent2: #00ffb3;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font);
+        }
+        body {
+            background: linear-gradient(120deg, #181c24 60%, #232a34 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 7%;
+            background: linear-gradient(90deg, #181c24 80%, var(--main-color) 120%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 2px 12px var(--shadow-color);
+        }
+        .logo {
+            font-size: 28px;
+            color: var(--main-color);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px #0a0a0a;
+        }
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .navbar a {
+            font-size: 17px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 28px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .navbar a.active,
+        .navbar a:hover {
+            color: var(--main-color);
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--main-color);
+            left: 0;
+            bottom: -4px;
+            border-radius: 2px;
+            transition: 0.4s;
+        }
+        .navbar a:hover::after,
+        .navbar a.active::after {
+            width: 100%;
+        }
+        #menu-icon {
+            font-size: 2.2rem;
+            color: var(--main-color);
+            cursor: pointer;
+            display: none;
+        }
+        .thanks-container {
+            flex: 1 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding-top: 110px;
+            padding-bottom: 40px;
+            background: linear-gradient(120deg, #181c24 60%, #232a34 100%);
+        }
+        .thanks-content {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1.2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .thanks-title {
+            font-size: 2.5rem;
+            color: var(--main-color);
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            text-align: center;
+            text-shadow: 0 2px 16px var(--shadow-color);
+            animation: glow 2.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 2px 16px var(--shadow-color);}
+            to { text-shadow: 0 2px 32px var(--main-color);}
+        }
+        .thanks-intro {
+            color: #b8eaff;
+            font-size: 1.18rem;
+            margin-bottom: 38px;
+            text-align: center;
+            line-height: 1.7;
+            max-width: 800px;
+            background: rgba(24,28,36,0.7);
+            border-radius: 14px;
+            padding: 18px 24px;
+            box-shadow: 0 2px 18px var(--shadow-color);
+            animation: fadeIn 1.5s 0.2s backwards;
+        }
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 32px;
+        }
+        .org-root {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .org-person {
+            background: linear-gradient(90deg, #232a34 80%, var(--main-color) 120%);
+            color: var(--text-color);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px var(--shadow-color);
+            padding: 18px 32px;
+            margin: 0 0 18px 0;
+            font-size: 1.18rem;
+            font-weight: 600;
+            position: relative;
+            min-width: 260px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            z-index: 2;
+            animation: popIn 1.2s;
+        }
+        .org-person:hover {
+            transform: scale(1.04) translateY(-4px);
+            box-shadow: 0 8px 32px var(--main-color);
+            background: linear-gradient(90deg, #232a34 60%, var(--accent2) 120%);
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8);}
+            to { opacity: 1; transform: scale(1);}
+        }
+        .org-children {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px 18px;
+            margin-top: 12px;
+            position: relative;
+        }
+        .org-branch {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 4px;
+            height: 32px;
+            background: linear-gradient(180deg, var(--main-color), transparent);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        .org-person .org-role {
+            display: block;
+            font-size: 0.98rem;
+            color: var(--accent);
+            font-weight: 400;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+        .org-person .org-desc {
+            display: block;
+            font-size: 0.98rem;
+            color: #b8eaff;
+            margin-top: 8px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .thanks-footer {
+            color: #b8eaff;
+            font-size: 1.08rem;
+            text-align: center;
+            margin-top: 18px;
+            background: rgba(24,28,36,0.7);
+            border-radius: 12px;
+            padding: 12px 18px;
+            box-shadow: 0 2px 12px var(--shadow-color);
+            animation: fadeIn 1.5s 0.4s backwards;
+        }
+        /* Animations de lignes */
+        .org-connector {
+            width: 2px;
+            height: 32px;
+            background: linear-gradient(180deg, var(--main-color), transparent);
+            margin: 0 auto;
+            animation: growLine 1.2s;
+        }
+        @keyframes growLine {
+            from { height: 0;}
+            to { height: 32px;}
+        }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .thanks-content { max-width: 98vw; }
+            .org-person { min-width: 180px; padding: 14px 10px; font-size: 1.01rem;}
+            .thanks-title { font-size: 2rem;}
+        }
+        @media (max-width: 650px) {
+            .header {
+                flex-direction: row;
+                padding: 10px 1%;
+            }
+            .navbar {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #232a34;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 18px 0;
+                display: none;
+                box-shadow: 0 8px 24px var(--shadow-color);
+            }
+            .navbar.active {
+                display: flex;
+            }
+            .navbar a {
+                margin: 10px 0 10px 18px;
+                font-size: 18px;
+            }
+            #menu-icon {
+                display: block;
+            }
+            .thanks-title { font-size: 1.3rem;}
+        }
+        .footer-copyright {
+            width: 100%;
+            background: #181c24;
+            color: var(--main-color);
+            text-align: center;
+            padding: 18px 0 12px 0;
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin-top: 60px;
+            box-shadow: 0 -2px 12px var(--shadow-color);
+            position: relative;
+            flex-shrink: 0;
+        }
+        .footer-copyright span {
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="index.html" class="logo">Portfolio</a>
+        <nav class="navbar" role="navigation" aria-label="Navigation principale">
+            <a href="index.html" style="--i:1">Accueil</a>
+            <a href="presentation.html" style="--i:2">Présentation</a>
+            <a href="btssiosisr.html" style="--i:3">BTS SIO SISR</a>
+            <a href="dashboard.html" style="--i:4">Dashboard</a>
+            <a href="competences.html" style="--i:5">Compétences</a>
+            <a href="projets.html" style="--i:6">Projets</a>
+            <a href="cv.html" style="--i:7">CV</a>
+            <a href="synthese.html" style="--i:8">Synthèse</a>
+            <a href="veille.html" style="--i:9">Veille</a>
+            <a href="contact.html" style="--i:10">Contact</a>
+            <a href="remerciements.html" class="active" style="--i:11">Remerciements</a>
+        </nav>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+    <!-- Section Remerciements -->
+    <main class="thanks-container">
+        <div class="thanks-content">
+            <h1 class="thanks-title">Remerciements</h1>
+            <div class="thanks-intro">
+                <span>
+                    À l’issue de cette première année de BTS SIO, je tiens à exprimer toute ma gratitude envers l’ensemble du corps enseignant et administratif de l’IPSSI. Malgré un parcours initial éloigné de l’informatique, vous avez su m’accompagner, me transmettre un savoir d’une valeur inestimable, et m’inspirer tant sur le plan pédagogique qu’émotionnel. Grâce à vous, mes axes d’amélioration sont devenus de simples souvenirs et j’ai pu m’épanouir dans le domaine qui me passionne.<br><br>
+                    Voici un hommage sincère à celles et ceux qui ont marqué mon année :
+                </span>
+            </div>
+            <div class="org-chart">
+                <div class="org-root">
+                    <div class="org-person" style="background:linear-gradient(90deg,#232a34 80%,#00e1ff 120%);">
+                        <i class='bx bxs-heart' style="color:var(--accent);font-size:2rem;vertical-align:middle;"></i>
+                        <span style="margin-left:8px;">Corps Enseignant & Administratif IPSSI</span>
+                        <span class="org-role">Un soutien inestimable</span>
+                    </div>
+                    <div class="org-connector"></div>
+                    <div class="org-children">
+                        <div class="org-person" style="animation-delay:0.1s;">
+                            Mr Fernando Netto
+                            <span class="org-role">Professeur d'SISR</span>
+                            <span class="org-desc">Une pédagogie qui frôle le génie, un mentor qui a su rendre l’informatique accessible et passionnante.</span>
+                        </div>
+                        <div class="org-person" style="animation-delay:0.2s;">
+                            Mme Flavie Tonon
+                            <span class="org-role">Professeure de SLAM</span>
+                            <span class="org-desc">Nous a initiés à la programmation comme un art, bien avant l’aspect technique. Une révélation !</span>
+                        </div>
+                        <div class="org-person" style="animation-delay:0.3s;">
+                            Mr Ed Uliengue
+                            <span class="org-role">Professeur d’Anglais</span>
+                            <span class="org-desc">Grâce à son professionnalisme motivant, mon expression orale s’est nettement améliorée.</span>
+                        </div>
+                        <div class="org-person" style="animation-delay:0.4s;">
+                            Mr Robine Decourcelle
+                            <span class="org-role">Professeur de CGE</span>
+                            <span class="org-desc">Remarquable par sa simplicité et sa proximité avec les élèves. Un exemple d’accessibilité.</span>
+                        </div>
+                        <div class="org-person" style="animation-delay:0.5s;">
+                            Dr Sana Ajagjal
+                            <span class="org-role">Professeure de Mathématiques</span>
+                            <span class="org-desc">Dotée d’une intelligence fine et d’un altruisme admirable tout au long de l’année.</span>
+                        </div>
+                        <div class="org-person" style="animation-delay:0.6s;">
+                            Mme Soumia Jellouli
+                            <span class="org-role">Professeure de CEJMA</span>
+                            <span class="org-desc">M’a appris à ne jamais rester sur mes acquis et à exploiter mon potentiel continuellement.</span>
+                        </div>
+                        <div class="org-person" style="animation-delay:0.7s;">
+                            Mme Sandrine Becrit
+                            <span class="org-role">Administration</span>
+                            <span class="org-desc">Son intelligence émotionnelle et son dévouement ont été la clé de nombreuses réussites.</span>
+                        </div>
+                        <div class="org-person" style="animation-delay:0.8s;">
+                            Mme Noémie Da Rocha
+                            <span class="org-role">Administration</span>
+                            <span class="org-desc">Un souffle de bonne humeur et de fermeté, qui a permis à beaucoup de tenir le cap vers l’excellence.</span>
+                        </div>
+                        <div class="org-person" style="animation-delay:0.9s;">
+                            <span>La Direction IPSSI (Mme Audrey Noel)</span>
+                            <span class="org-role">Égalité des chances</span>
+                            <span class="org-desc">Merci à celle qui, par son pouvoir décisionnel et son sens de l’équité, m’a permis de vivre une année exceptionnelle à l’IPSSI.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="thanks-footer">
+                <i class='bx bxs-graduation' style="color:var(--main-color);font-size:1.3rem;vertical-align:middle;"></i>
+                <span style="margin-left:8px;">
+                    Merci à toutes et à tous pour votre engagement, votre bienveillance et votre passion. <br>
+                    C’est en partie grâce à vous que j’ai pu m’épanouir et croire en mon potentiel.<br>
+                    <b>Avec toute ma reconnaissance,</b> <br>Adel Bensaad
+                </span>
+            </div>
+        </div>
+    </main>
+    <footer class="footer-copyright">
+        <span>&copy; 2025 Adel Bensaad - Tous droits réservés</span>
+    </footer>
+    <script>
+        // Menu responsive
+        const menuIcon = document.getElementById("menu-icon");
+        const navbar = document.querySelector(".navbar");
+        menuIcon.onclick = () => {
+            navbar.classList.toggle("active");
+        };
+        // Fermer le menu au clic sur un lien (mobile)
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth < 650) navbar.classList.remove('active');
+            });
+        });
+
+        // Animation d'apparition en cascade des personnes
+        document.addEventListener('DOMContentLoaded', () => {
+            const persons = document.querySelectorAll('.org-person');
+            persons.forEach((el, i) => {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                }, 300 + i * 120);
+            });
+        });
+
+        // Animation de surbrillance au clic sur une personne
+        document.querySelectorAll('.org-person').forEach(person => {
+            person.addEventListener('click', function() {
+                this.classList.add('highlight');
+                setTimeout(() => this.classList.remove('highlight'), 800);
+            });
+        });
+    </script>
+</body>
+</html>
